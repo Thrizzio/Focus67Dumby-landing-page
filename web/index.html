@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta
+      name="description"
+      content="Focus67Dumby is a 100% offline floating desktop accountability companion that uses local Ollama models to stop rabbit holes without blocking legitimate work."
+    >
+    <meta name="theme-color" content="#0b0d0c">
+    <link rel="stylesheet" href="styles.css">
+    <title>Focus67Dumby — local AI accountability, no cloud leash</title>
+  </head>
+  <body class="site-body" data-product="focus67dumby">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header
+      id="site-header"
+      class="site-header"
+      data-hook="site-header"
+      data-sticky="true"
+    >
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Focus67Dumby home">
+          <span class="brand-mark" aria-hidden="true"><span>67</span></span>
+          <span class="brand-name">Focus<span>67</span>Dumby</span>
+        </a>
+
+        <button
+          id="mobile-menu-toggle"
+          class="mobile-menu-toggle"
+          data-hook="mobile-menu-toggle"
+          type="button"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="menu-icon" aria-hidden="true">☰</span>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          data-hook="primary-nav"
+          aria-label="Primary navigation"
+        >
+          <a href="#demo">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#open-local">Why local AI?</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#quickstart">Setup / docs</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub ↗</a>
+          <button class="nav-cta" type="button" data-open-checkout="true" data-action="open-checkout" data-checkout-product="Focus67Dumby Desktop Edition" data-checkout-price="$19" aria-controls="checkout-modal">Get lifetime access</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="hero section-shell" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow eyebrow-pill">
+              <span class="status-dot" aria-hidden="true"></span>
+              100% OFFLINE <span aria-hidden="true">•</span> LOCAL OLLAMA VISION + TEXT MODELS
+            </p>
+            <h1 id="hero-title">Stop the rabbit hole. <em>Keep the work.</em></h1>
+            <p class="hero-subhead">
+              The floating accountability companion that knows a coding tutorial is work,
+              YouTube Shorts are not, and your screen never needs to become somebody
+              else’s training data. Local Ollama models, one sticky note, zero cloud
+              trackers.
+            </p>
+            <div class="hero-actions" aria-label="Hero actions">
+              <button class="button button-primary" type="button" data-open-checkout="true" data-action="open-checkout" data-checkout-product="Focus67Dumby Desktop Edition" data-checkout-price="$19" aria-controls="checkout-modal">
+                Buy lifetime desktop <span class="button-price">$19 once</span> <span aria-hidden="true">↗</span>
+              </button>
+              <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+                Download open-source build <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <ul class="hero-proof" aria-label="Product promises">
+              <li>
+                <strong>0 bytes</strong>
+                <span>of screen data leave RAM</span>
+              </li>
+              <li>
+                <strong>30 sec</strong>
+                <span>to calibrate a workspace</span>
+              </li>
+              <li>
+                <strong>$0 / mo</strong>
+                <span>API cost after install</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Focus67Dumby local session preview">
+            <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+            <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+            <article class="hero-console window-card sticky-note-widget">
+              <header class="window-bar">
+                <div class="window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="window-title">focus67dumby.exe / 127.0.0.1</span>
+                <span class="window-state"><span class="status-dot" aria-hidden="true"></span> offline</span>
+              </header>
+              <div class="console-body">
+                <div class="sticky-note-heading">
+                  <p class="console-label">TODAY'S FOCUS</p>
+                  <span class="sticky-note-pin" aria-hidden="true">✦</span>
+                </div>
+                <p class="console-goal">Finish the release notes without opening a new rabbit hole.</p>
+                <div class="console-meter" aria-label="Focus block progress">
+                  <span class="console-meter-fill" style="width: 67%"></span>
+                </div>
+                <div class="console-meta">
+                  <span>67 min sprint</span>
+                  <span class="console-chip">🟢 LOCKED IN • OLLAMA</span>
+                </div>
+                <div class="console-log" aria-label="Recent local events">
+                  <p><span class="log-time">09:41:08</span> VS Code + docs accepted</p>
+                  <p><span class="log-time">09:48:22</span> screenshot diff: 0.0%</p>
+                  <p><span class="log-time">09:52:10</span> <strong>no cloud call made</strong></p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="showcase section-shell section-dark" aria-labelledby="demo-title">
+        <div class="container">
+          <div class="section-heading section-heading-wide">
+            <p class="eyebrow">Live product preview / no account required</p>
+            <h2 id="demo-title">A sticky note that can tell “work” from “wander.”</h2>
+            <p>
+              Change the goal, model, and nudge state below. This is the same contract the
+              desktop companion uses: a 512×288 in-memory frame, a foreground window
+              title, and a local decision that never crosses <code>127.0.0.1:11434</code>.
+            </p>
+          </div>
+
+          <div class="preview-shell" data-component="interactive-preview">
+            <aside class="preview-controls panel-card" aria-labelledby="preview-controls-title">
+              <div class="panel-card-heading">
+                <div>
+                  <p class="panel-kicker">01 / configure</p>
+                  <h3 id="preview-controls-title">Your focus contract</h3>
+                </div>
+                <span class="spec-badge">LOCAL</span>
+              </div>
+
+              <div class="form-field">
+                <label for="demo-goal">What should the next block protect?</label>
+                <textarea
+                  id="demo-goal"
+                  class="text-input"
+                  name="goal"
+                  rows="3"
+                  maxlength="160"
+                  aria-describedby="demo-goal-hint"
+                >Watch the React tutorial, then ship the release notes.</textarea>
+                <p id="demo-goal-hint" class="field-hint">
+                  A concrete goal helps the local model distinguish a tutorial from a
+                  Shorts spiral.
+                </p>
+              </div>
+
+              <div class="goal-display-card">
+                <span class="field-label">Active goal</span>
+                <output
+                  id="demo-goal-display"
+                  class="goal-display"
+                  for="demo-goal"
+                  aria-live="polite"
+                  >Watch the React tutorial, then ship the release notes.</output>
+              </div>
+
+              <div class="toggle-row">
+                <div>
+                  <label class="toggle-label" for="vision-toggle">Vision Mode (Screenshot AI)</label>
+                  <p class="field-hint">Reads a downscaled 512×288 frame in RAM; never uploads it.</p>
+                </div>
+                <input
+                  id="vision-toggle"
+                  class="toggle-input"
+                  name="vision"
+                  type="checkbox"
+                  role="switch"
+                  checked
+                  aria-describedby="vision-toggle-detail"
+                >
+              </div>
+              <p id="vision-toggle-detail" class="sr-only">
+                Turn off the optional vision signal to use goal and window activity only.
+              </p>
+
+              <div class="form-field">
+                <label for="model-select">Ollama model</label>
+                <select id="model-select" class="select-input" name="model">
+                  <option value="gemma3:270m">gemma3:270m · text / &lt;400MB RAM</option>
+                  <option value="gemma4:e2b" selected>gemma4:e2b · balanced local vision</option>
+                  <option value="gemma4:e4b">gemma4:e4b · deeper local vision</option>
+                  <option value="qwen3-vl:2b">qwen3-vl:2b · multimodal / GPU</option>
+                </select>
+              </div>
+
+              <div class="control-actions">
+                <button class="button button-small button-primary" type="button" data-action="preview-start">
+                  Run local check
+                </button>
+                <button id="preview-reset" class="button button-small button-quiet" type="button" data-action="preview-reset">
+                  Reset
+                </button>
+              </div>
+            </aside>
+
+            <div class="preview-stage" aria-label="Focus67Dumby interactive preview">
+              <div class="preview-stage-header">
+                <div>
+                  <p class="panel-kicker">02 / observe</p>
+                  <h3>Floating sticky-note companion</h3>
+                </div>
+                <div class="preview-stage-actions">
+                  <label class="inline-toggle" for="live-mode-toggle">
+                    <input id="live-mode-toggle" name="live-mode" type="checkbox" role="switch">
+                    <span>Live mode</span>
+                  </label>
+                  <span id="preview-model" class="model-chip">gemma4:e2b</span>
+                  <span id="preview-vision" class="privacy-chip" data-vision="on"><span class="status-dot" aria-hidden="true"></span> VISION ON</span>
+                  <span class="privacy-chip"><span class="status-dot" aria-hidden="true"></span> 127.0.0.1:11434</span>
+                </div>
+              </div>
+
+              <div class="preview-window">
+                <nav id="breadcrumb-trail" class="breadcrumb-trail" aria-label="Current desktop context">
+                  <ol>
+                    <li><span class="breadcrumb-icon" aria-hidden="true">⌂</span> Desktop</li>
+                    <li>Projects</li>
+                    <li>Focus67Dumby</li>
+                    <li aria-current="page">Release notes</li>
+                  </ol>
+                </nav>
+
+                <div class="preview-window-main">
+                  <div class="preview-status-column">
+                    <div
+                      id="preview-status"
+                      class="preview-status status-calibrating"
+                      data-state="calibrating"
+                      data-preview-hook="status"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
+                      <div class="status-heading">
+                        <span id="preview-signal" class="preview-signal" aria-hidden="true">◌</span>
+                         <span id="preview-status-label">🔵 CALIBRATING WORKSPACE (30s)</span>
+                      </div>
+                      <p id="preview-status-detail" class="preview-status-detail">
+                        Whitelisting VS Code, terminal, docs, and localhost for zero-friction switching.
+                      </p>
+                    </div>
+
+                    <div class="progress-block">
+                      <div class="progress-heading">
+                        <span id="preview-progress-label">Focus block progress</span>
+                        <span class="progress-value">67%</span>
+                      </div>
+                      <progress
+                        id="preview-progress"
+                        class="preview-progress"
+                        value="67"
+                        max="100"
+                        aria-labelledby="preview-progress-label"
+                      >67%</progress>
+                    </div>
+
+                    <div class="mode-picker">
+                      <div class="mode-picker-heading">
+                        <span class="field-label">Preview state</span>
+                        <span class="field-hint">Manual override</span>
+                      </div>
+                      <div
+                        id="preview-mode-buttons"
+                        class="preview-mode-buttons"
+                        role="group"
+                        aria-label="Preview state controls"
+                      >
+                        <button
+                          class="preview-state-button is-active"
+                          type="button"
+                          data-state="calibrating"
+                          aria-pressed="true"
+                        >
+                          🔵 Calibrating workspace
+                        </button>
+                        <button
+                          class="preview-state-button"
+                          type="button"
+                          data-state="locked"
+                          aria-pressed="false"
+                        >
+                          🟢 Locked in · Ollama
+                        </button>
+                        <button
+                          class="preview-state-button"
+                          type="button"
+                          data-state="distracted"
+                          aria-pressed="false"
+                        >
+                          🔴 Distracted · popup takeover
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <aside id="trust-window" class="trust-window" aria-labelledby="trust-window-title">
+                    <div class="trust-window-heading">
+                      <div>
+                        <span class="field-label">Context boundary</span>
+                        <h4 id="trust-window-title">Trust window</h4>
+                      </div>
+                      <span class="spec-badge spec-badge-muted">4-window trail</span>
+                    </div>
+                    <p>
+                      The first 30 seconds whitelist your IDE, terminal, docs, and localhost.
+                      Popups can be trusted without losing the breadcrumb trail.
+                    </p>
+                    <ul class="signal-list">
+                      <li><span class="signal-check" aria-hidden="true">✓</span> Declared goal</li>
+                      <li><span class="signal-check" aria-hidden="true">✓</span> Active window title</li>
+                      <li><span class="signal-check" aria-hidden="true">✓</span> Optional 512×288 vision frame</li>
+                    </ul>
+                    <span class="trust-window-action" aria-hidden="true">[+ Trust Window]</span>
+                  </aside>
+                </div>
+
+                <div class="preview-activity-wrap">
+                  <div class="activity-heading">
+                    <span class="field-label">Activity stream</span>
+                    <span class="field-hint">aria-live updates in the desktop app</span>
+                  </div>
+                  <div
+                    id="preview-activity"
+                    class="preview-activity"
+                    aria-live="polite"
+                    aria-atomic="false"
+                    role="log"
+                    aria-label="Preview activity"
+                  >
+                    <p><time datetime="PT0M03S">00:03</time> 30s calibration started — 4 workspace windows detected.</p>
+                    <p><time datetime="PT0M08S">00:08</time> Pixel diff 0.0% — static screen costs zero GPU cycles.</p>
+                    <p><time datetime="PT0M12S">00:12</time> Local model matched goal to React tutorial context.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="showcase-footnote">
+            <span aria-hidden="true">↳</span>
+            This preview is a static contract for the desktop experience. A real session
+            only evaluates the signals you enable.
+          </p>
+        </div>
+      </section>
+
+      <section id="compare" class="comparison section-shell" aria-labelledby="compare-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Three ways to “focus”</p>
+            <h2 id="compare-title">Most tools force a trade-off. We refuse it.</h2>
+            <p>
+              You should not have to choose between blocking the tutorial you need and
+              shipping your screen history to a remote tracker.
+            </p>
+          </div>
+
+          <div class="comparison-grid">
+            <article class="comparison-card comparison-card-muted">
+              <div class="comparison-card-top"><span class="comparison-index">01</span><span class="comparison-tag">BLOCK</span></div>
+              <h3>Dumb website blockers</h3>
+              <p class="comparison-brands">Cold Turkey / Freedom</p>
+              <p>Block all of YouTube indiscriminately. Great until the “distraction” is the coding tutorial, system design breakdown, or private stream you actually need.</p>
+              <div class="comparison-verdict"><span aria-hidden="true">×</span> Context-blind</div>
+            </article>
+            <article class="comparison-card comparison-card-muted">
+              <div class="comparison-card-top"><span class="comparison-index">02</span><span class="comparison-tag">TRACK</span></div>
+              <h3>Cloud AI trackers</h3>
+              <p class="comparison-brands">Rize / Reclaim</p>
+              <p>Stream private window titles, client names, and screen activity to remote servers—then charge $15+/month forever for the privilege.</p>
+              <div class="comparison-verdict"><span aria-hidden="true">↗</span> Data leaves home</div>
+            </article>
+            <article class="comparison-card comparison-card-featured">
+              <div class="comparison-card-top"><span class="comparison-index">03</span><span class="comparison-tag">KEEP</span></div>
+              <h3>Focus67Dumby</h3>
+              <p class="comparison-brands">Local Ollama intelligence</p>
+              <p>Context-aware AI runs on your own machine at <code>127.0.0.1:11434</code>. You get useful nudges, $0/month in API costs, and a screen that stays yours.</p>
+              <div class="comparison-verdict"><span aria-hidden="true">✓</span> Context-aware + local</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="deep-dive section-shell section-dark" aria-labelledby="features-title">
+        <div class="container">
+          <div class="section-heading section-heading-wide">
+            <p class="eyebrow">The engineering under the sticky note</p>
+            <h2 id="features-title">Four small inventions that make local accountability feel human.</h2>
+            <p>
+              No black-box productivity score. The app composes tiny, inspectable signals
+              into a nudge you can understand, tune, and turn off.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-large">
+              <div class="feature-number" aria-hidden="true">01</div>
+              <h3>👁️ Hybrid vision + window title pipeline</h3>
+              <p>
+                <code>gemma4:e2b</code> or <code>qwen3-vl:2b</code> reads a 512×288
+                in-memory screenshot alongside the Win32 foreground window title. A 16:9
+                perceptual pixel-diff cache skips static screens below the <strong>&lt;3%</strong>
+                threshold, so a still editor costs zero extra GPU cycles.
+              </p>
+              <div class="feature-code" aria-label="Local inference flow">
+                <code>512×288 frame + Win32 title → local verdict</code>
+              </div>
+              <ul class="feature-list">
+                <li>Screenshot never written to disk</li>
+                <li>Static frame diff cache &lt;3%</li>
+                <li>Deterministic fallback if Ollama is asleep</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-number" aria-hidden="true">02</div>
+              <h3>⏱️ 30-second workspace calibration</h3>
+              <p>
+                The first 30 seconds automatically whitelist every window you open—IDE,
+                terminal, docs, localhost—for instant <strong>0ms</strong> multi-window
+                switching. Add popups with <strong>[+ Trust Window]</strong> and keep a
+                rolling four-window breadcrumb trail for OAuth logins and handoffs.
+              </p>
+              <div class="mini-breadcrumb" aria-label="Example trusted breadcrumb"><span>VS Code</span><i>›</i><span>localhost</span><i>›</i><span>OAuth popup</span></div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-number" aria-hidden="true">03</div>
+              <h3>🚨 Continuous escalating interference</h3>
+              <p>
+                Choose <strong>Gentle Toast</strong>, <strong>Toast + Sound</strong>, or
+                <strong>Popup Takeover + Sound</strong>. On strikes 2, 4, 6… the sticky
+                note forces itself frontmost, flashes red, and shakes—just enough to
+                interrupt the spiral, never enough to hijack your machine.
+              </p>
+              <div class="nudge-ladder"><span>1 / toast</span><span>2 / shake</span><span>4 / takeover</span></div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-number" aria-hidden="true">04</div>
+              <h3>🔄 Zero-lock-in model switcher</h3>
+              <p>
+                Discover local models live through <code>/api/tags</code>. Swap from
+                <code>gemma3:270m</code> at &lt;400MB RAM to a multimodal vision model
+                without a vendor account, backed by a deterministic offline heuristic
+                fallback when Ollama is unavailable.
+              </p>
+              <div class="model-pills"><span>gemma3:270m</span><span>gemma4:e2b</span><span>gemma4:e4b</span><span>qwen3-vl:2b</span></div>
+            </article>
+          </div>
+
+          <div class="architecture-strip" aria-label="Focus67Dumby architecture">
+            <div class="architecture-node">
+              <span class="architecture-icon" aria-hidden="true">⌁</span>
+              <strong>Your goal</strong>
+              <span>one outcome, in your words</span>
+            </div>
+            <span class="architecture-arrow" aria-hidden="true">→</span>
+            <div class="architecture-node">
+              <span class="architecture-icon" aria-hidden="true">▣</span>
+              <strong>Local context</strong>
+              <span>approved window and signals</span>
+            </div>
+            <span class="architecture-arrow" aria-hidden="true">→</span>
+            <div class="architecture-node">
+              <span class="architecture-icon" aria-hidden="true">◉</span>
+              <strong>Human-readable state</strong>
+              <span>explainable, reversible, yours</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="open-local" class="open-local section-shell" aria-labelledby="open-local-title">
+        <div class="container open-local-grid">
+          <div class="section-heading">
+            <p class="eyebrow">Why open &amp; local innovation matters</p>
+            <h2 id="open-local-title">The cloud is the wrong default for a screen-aware tool.</h2>
+            <p>
+              Open-weight models make a fairer accountability product possible: the
+              sensitive loop stays on your machine, the economics stay honest, and the
+              tool still works when the Wi-Fi disappears.
+            </p>
+            <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+              Browse the source on GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="principles-card panel-card">
+            <h3>Three reasons to keep inference close</h3>
+            <ul class="principles-list">
+              <li>
+                <span class="principle-icon" aria-hidden="true">01</span>
+                <div><strong>Absolute data sovereignty</strong><span>Safe for engineers under NDAs: screenshots never leave RAM and window titles never leave <code>localhost</code>.</span></div>
+              </li>
+              <li>
+                <span class="principle-icon" aria-hidden="true">02</span>
+                <div><strong>Unit economics that actually work</strong><span>Polling cloud vision every 10 seconds for 8 hours can cost $30+/month in tokens. Open weights make marginal inference $0.00.</span></div>
+              </li>
+              <li>
+                <span class="principle-icon" aria-hidden="true">03</span>
+                <div><strong>True offline resilience</strong><span>Keep a focus sprint on an airplane, a train, or unstable Wi-Fi; the local fallback still knows the boundary.</span></div>
+              </li>
+              <li>
+                <span class="principle-icon" aria-hidden="true">04</span>
+                <div><strong>One-time purchase, not a meter</strong><span>Pay for the polished desktop build once. There is no recurring API toll for having a private screen.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing section-shell section-dark" aria-labelledby="pricing-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Pricing without the recurring guilt</p>
+            <h2 id="pricing-title">Open source at $0. Polished at $19 once.</h2>
+            <p>
+              No subscription, no usage meter, no “your trial is over” nudge. Bring your
+              own Ollama runtime or unlock the build that makes the first run painless.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="pricing-card">
+              <div class="pricing-card-top">
+                <p class="plan-kicker">Open-source / self-build</p>
+                <h3>Bring your own Ollama</h3>
+                <p class="plan-description">Clone, run, inspect, and customize the local companion yourself.</p>
+                <p class="plan-price"><span class="price-amount">$0</span> <span class="price-suffix">forever</span></p>
+              </div>
+              <ul class="plan-features">
+                <li>Clone from GitHub and bring your own models</li>
+                <li><code>python -m src.main</code> or Docker</li>
+                <li>Deterministic offline heuristic fallback</li>
+                <li>Full source, no account, no API bill</li>
+              </ul>
+              <a class="button button-secondary button-full" href="https://github.com/" target="_blank" rel="noreferrer noopener">Clone on GitHub <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <article class="pricing-card pricing-card-featured">
+              <div class="popular-badge">Most focused</div>
+              <div class="pricing-card-top">
+                <p class="plan-kicker">Pro desktop edition</p>
+                <h3>One click to locked in</h3>
+                <p class="plan-description">The pre-compiled Windows desktop companion, ready for a real workday.</p>
+                <p class="plan-price"><span class="price-amount">$19</span> <span class="price-suffix">lifetime / one-time</span></p>
+              </div>
+              <ul class="plan-features">
+                <li>Focus67Dumby-Setup.exe / release bundle</li>
+                <li>1-click Ollama setup helper</li>
+                <li>Custom alert packs + escalating nudges</li>
+                <li>Lifetime updates for one Windows device</li>
+              </ul>
+              <button
+                class="button button-primary button-full checkout-trigger"
+                type="button"
+                data-open-checkout="true"
+                data-action="open-checkout"
+                data-checkout-product="Focus67Dumby Pro Desktop Edition"
+                data-checkout-price="$19"
+                aria-controls="checkout-modal"
+              >
+                Buy now — $19 <span aria-hidden="true">→</span>
+              </button>
+            </article>
+          </div>
+
+          <p class="pricing-note">
+            Payment methods in the demo: UPI, Razorpay, cards, or Stripe. The checkout
+            ships in simulation mode until you set a payment link or webhook in
+            <code>window.FOCUS67_CONFIG</code>.
+          </p>
+        </div>
+      </section>
+
+      <section id="quickstart" class="quickstart section-shell" aria-labelledby="quickstart-title">
+        <div class="container quickstart-grid">
+          <div class="section-heading">
+            <p class="eyebrow">Setup / docs / bring your own runtime</p>
+            <h2 id="quickstart-title">Three commands. Then the note starts watching the boundary.</h2>
+            <p>
+              Ollama owns the model files. Focus67Dumby owns the tiny local loop around
+              them. Use the standalone Windows build or run the open-source build in a
+              Python or Docker environment.
+            </p>
+            <div class="spec-badges" aria-label="Focus67Dumby specifications">
+              <span class="spec-badge">WINDOWS 11 NATIVE GUI</span>
+              <span class="spec-badge">LINUX HEADLESS / DOCKER VERIFIED</span>
+              <span class="spec-badge">PYTHON 3.11+</span>
+              <span class="spec-badge">OLLAMA LOCAL</span>
+              <span class="spec-badge">OPEN SOURCE</span>
+            </div>
+          </div>
+
+          <div class="quickstart-terminal window-card">
+            <div class="window-bar">
+              <div class="window-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="window-title">Terminal</span>
+              <span class="window-state">bash / local-only</span>
+            </div>
+            <pre class="terminal-code"><code><span class="code-comment"># pull the recommended local vision model</span>
+ollama pull gemma4:e2b
+
+<span class="code-comment"># start the open-source companion</span>
+python -m src.main
+
+<span class="code-comment"># or build the verified headless image</span>
+docker build -t focus67dumby .
+
+<span class="code-output">✓ Ollama reachable at 127.0.0.1:11434</span>
+<span class="code-output">✓ screenshot cache armed at 512×288</span>
+<span class="code-output">→ focus state: calibrating workspace</span></code></pre>
+            <div class="terminal-footer">
+              <span>One command to check. One goal to begin.</span>
+              <a class="text-link" href="#demo">See the contract <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="checkout-modal"
+      class="checkout-modal"
+      data-hook="checkout-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="checkout-title"
+      aria-describedby="checkout-description"
+      aria-hidden="true"
+      hidden
+    >
+      <button
+        id="checkout-backdrop"
+        class="checkout-backdrop"
+        type="button"
+        aria-label="Close checkout"
+        data-hook="checkout-backdrop"
+      ></button>
+      <div class="checkout-panel" role="document">
+        <header class="checkout-header">
+          <div>
+            <p class="panel-kicker">Secure local-first checkout</p>
+            <h2 id="checkout-title">Make the next block easier.</h2>
+          </div>
+          <button
+            id="checkout-close"
+            class="icon-button"
+            type="button"
+            aria-label="Close checkout"
+            data-hook="checkout-close"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <p id="checkout-description" class="checkout-description">
+          Choose a payment method and leave an email for the license receipt. Payment
+          details are handled by the selected provider; Focus67Dumby does not store card
+          numbers in the desktop app.
+        </p>
+
+        <form id="checkout-form" class="checkout-form" data-hook="checkout-form" method="post">
+          <section id="checkout-step-payment" class="checkout-step" data-step="payment" aria-labelledby="payment-step-title">
+            <div class="checkout-summary">
+              <span class="field-label">Selected plan</span>
+              <div class="checkout-summary-line">
+                <strong id="checkout-product-name" data-hook="checkout-product-name">Focus67Dumby Pro Desktop Edition</strong>
+                <output id="checkout-price" data-hook="checkout-price" aria-live="polite">$19</output>
+              </div>
+            </div>
+
+            <fieldset class="payment-methods-fieldset">
+              <legend id="payment-step-title">Payment method</legend>
+              <div
+                id="payment-methods"
+                class="payment-methods"
+                data-hook="payment-methods"
+                role="group"
+                aria-labelledby="payment-step-title"
+              >
+                <button
+                  class="payment-method is-selected"
+                  type="button"
+                  data-payment-method="upi"
+                  aria-pressed="true"
+                >
+                  <span class="payment-method-name">UPI</span>
+                  <span class="payment-method-note">India</span>
+                </button>
+                <button
+                  class="payment-method"
+                  type="button"
+                  data-payment-method="razorpay"
+                  aria-pressed="false"
+                >
+                  <span class="payment-method-name">Razorpay</span>
+                  <span class="payment-method-note">UPI &amp; wallets</span>
+                </button>
+                <button
+                  class="payment-method"
+                  type="button"
+                  data-payment-method="cards"
+                  aria-pressed="false"
+                >
+                  <span class="payment-method-name">Cards</span>
+                  <span class="payment-method-note">Visa / Mastercard</span>
+                </button>
+                <button
+                  class="payment-method"
+                  type="button"
+                  data-payment-method="stripe"
+                  aria-pressed="false"
+                >
+                  <span class="payment-method-name">Stripe</span>
+                  <span class="payment-method-note">International</span>
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset id="payment-fields" class="payment-fields" data-hook="payment-fields">
+              <legend>Your receipt details</legend>
+              <div class="form-field">
+                <label for="payer-name">Name</label>
+                <input id="payer-name" class="text-input" name="payer-name" type="text" autocomplete="name" required>
+              </div>
+              <div class="form-field">
+                <label for="payer-email">Email</label>
+                <input id="payer-email" class="text-input" name="payer-email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form-field">
+                <label for="payment-reference">Payment reference <span class="optional">optional</span></label>
+                <input
+                  id="payment-reference"
+                  class="text-input"
+                  name="payment-reference"
+                  type="text"
+                  autocomplete="off"
+                  aria-describedby="payment-reference-hint"
+                >
+                <p id="payment-reference-hint" class="field-hint">Useful for UPI or a manually confirmed payment.</p>
+              </div>
+            </fieldset>
+
+            <p id="checkout-error" class="checkout-error" role="alert" aria-live="assertive" hidden>
+              We could not confirm the payment yet. Check the details and try again.
+            </p>
+            <button id="checkout-submit" class="button button-primary button-full" type="submit" data-hook="checkout-submit">
+              Continue to payment <span aria-hidden="true">→</span>
+            </button>
+            <p class="checkout-legal">
+              By continuing, you agree to receive the license receipt at the email above.
+            </p>
+          </section>
+
+          <section id="checkout-step-success" class="checkout-step checkout-success" data-step="success" aria-labelledby="success-step-title" aria-live="polite" hidden>
+            <p class="success-mark" aria-hidden="true">✓</p>
+            <p class="panel-kicker">Payment confirmed</p>
+            <h3 id="success-step-title">Your local session is ready.</h3>
+            <p>
+              Save the license key and download the bundle before closing this window.
+              The key is also sent to the receipt email.
+            </p>
+            <div class="license-box">
+              <span class="field-label">License key</span>
+              <code id="license-key" data-hook="license-key">Will be generated after payment</code>
+            </div>
+            <div class="success-actions">
+              <a id="download-bundle" class="button button-primary" data-hook="download-bundle" data-download="bundle" href="#quickstart">Download bundle</a>
+              <a id="download-receipt" class="button button-secondary" data-hook="download-receipt" data-download="receipt" href="#quickstart">View receipt steps</a>
+            </div>
+            <p class="success-source-link">
+              Prefer to build it yourself?
+              <a id="open-source-link" data-hook="open-source-link" href="https://github.com/" target="_blank" rel="noreferrer noopener">Open the source on GitHub <span aria-hidden="true">↗</span></a>
+            </p>
+          </section>
+        </form>
+      </div>
+    </div>
+
+    <footer id="site-footer" class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Focus67Dumby home">
+            <span class="brand-mark" aria-hidden="true"><span>67</span></span>
+            <span class="brand-name">Focus<span>67</span>Dumby</span>
+          </a>
+          <p>Keep the next block yours. Locally.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub ↗</a>
+          <a href="#quickstart">Documentation</a>
+          <a href="#buildathon">Buildathon submission</a>
+          <a href="#demo">Live demo</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+        <div id="buildathon" class="footer-meta">
+          <p>Buildathon track: <strong>Local AI / privacy-first tooling</strong></p>
+          <p><small>Made for deep work, not data exhaust. © 2026 Focus67Dumby.</small></p>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
