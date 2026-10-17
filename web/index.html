@@ -681,9 +681,9 @@ docker build -t focus67dumby .
         </header>
 
         <p id="checkout-description" class="checkout-description">
-          Choose a payment method and leave an email for the license receipt. Payment
-          details are handled by the selected provider; Focus67Dumby does not store card
-          numbers in the desktop app.
+          Choose a payment method and leave an email for the license receipt. In the
+          default simulation, no funds move; configure a real provider link and webhook
+          before treating an order as settled. Card numbers are never stored here.
         </p>
 
         <form id="checkout-form" class="checkout-form" data-hook="checkout-form" method="post">
@@ -781,11 +781,12 @@ docker build -t focus67dumby .
 
           <section id="checkout-step-success" class="checkout-step checkout-success" data-step="success" aria-labelledby="success-step-title" aria-live="polite" hidden>
             <p class="success-mark" aria-hidden="true">✓</p>
-            <p class="panel-kicker">Payment confirmed</p>
+            <p class="panel-kicker">Simulation complete</p>
             <h3 id="success-step-title">Your local session is ready.</h3>
             <p>
               Save the license key and download the bundle before closing this window.
-              The key is also sent to the receipt email.
+              This demo creates a local receipt; a real provider can deliver the key by
+              email after you connect its webhook.
             </p>
             <div class="license-box">
               <span class="field-label">License key</span>
