@@ -9,7 +9,7 @@
       content="Focus67Dumby is a 100% offline floating desktop accountability companion that uses local Ollama models to stop rabbit holes without blocking legitimate work."
     >
     <meta name="theme-color" content="#0b0d0c">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.0.1">
     <title>Focus67Dumby — local AI accountability, no cloud leash</title>
   </head>
   <body class="site-body" data-product="focus67dumby">
@@ -50,7 +50,7 @@
           <a href="#open-local">Why local AI?</a>
           <a href="#pricing">Pricing</a>
           <a href="#quickstart">Setup / docs</a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub ↗</a>
+          <a href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           <button class="nav-cta" type="button" data-open-checkout="true" data-action="open-checkout" data-checkout-product="Focus67Dumby Desktop Edition" data-checkout-price="$19" aria-controls="checkout-modal">Get lifetime access</button>
         </nav>
       </div>
@@ -75,7 +75,7 @@
               <button class="button button-primary" type="button" data-open-checkout="true" data-action="open-checkout" data-checkout-product="Focus67Dumby Desktop Edition" data-checkout-price="$19" aria-controls="checkout-modal">
                 Buy lifetime desktop <span class="button-price">$19 once</span> <span aria-hidden="true">↗</span>
               </button>
-              <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+              <a class="button button-secondary" href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">
                 Download open-source build <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -504,7 +504,7 @@
               sensitive loop stays on your machine, the economics stay honest, and the
               tool still works when the Wi-Fi disappears.
             </p>
-            <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+            <a class="button button-secondary" href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">
               Browse the source on GitHub <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -558,7 +558,7 @@
                 <li>Deterministic offline heuristic fallback</li>
                 <li>Full source, no account, no API bill</li>
               </ul>
-              <a class="button button-secondary button-full" href="https://github.com/" target="_blank" rel="noreferrer noopener">Clone on GitHub <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary button-full" href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">Clone on GitHub <span aria-hidden="true">↗</span></a>
             </article>
 
             <article class="pricing-card pricing-card-featured">
@@ -783,22 +783,21 @@ docker build -t focus67dumby .
             <p class="success-mark" aria-hidden="true">✓</p>
             <p class="panel-kicker">Simulation complete</p>
             <h3 id="success-step-title">Your local session is ready.</h3>
-            <p>
-              Save the license key and download the bundle before closing this window.
-              This demo creates a local receipt; a real provider can deliver the key by
-              email after you connect its webhook.
+            <p id="checkout-success-redirect-note">
+              Save your license key below. You will be redirected to the official
+              GitHub repository automatically, or click <strong>Get It on GitHub ↗</strong>.
             </p>
             <div class="license-box">
               <span class="field-label">License key</span>
               <code id="license-key" data-hook="license-key">Will be generated after payment</code>
             </div>
             <div class="success-actions">
-              <a id="download-bundle" class="button button-primary" data-hook="download-bundle" data-download="bundle" href="#quickstart">Download bundle</a>
-              <a id="download-receipt" class="button button-secondary" data-hook="download-receipt" data-download="receipt" href="#quickstart">View receipt steps</a>
+              <a id="download-bundle" class="button button-primary" data-hook="download-bundle" data-download="bundle" href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">Get It on GitHub ↗</a>
+              <a id="download-receipt" class="button button-secondary" data-hook="download-receipt" data-download="receipt" href="#quickstart">Download license receipt</a>
             </div>
             <p class="success-source-link">
               Prefer to build it yourself?
-              <a id="open-source-link" data-hook="open-source-link" href="https://github.com/" target="_blank" rel="noreferrer noopener">Open the source on GitHub <span aria-hidden="true">↗</span></a>
+              <a id="open-source-link" data-hook="open-source-link" href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">Open the source on GitHub <span aria-hidden="true">↗</span></a>
             </p>
           </section>
         </form>
@@ -815,7 +814,7 @@ docker build -t focus67dumby .
           <p>Keep the next block yours. Locally.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub ↗</a>
+          <a href="https://github.com/Thrizzio/Focus67Dumby" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           <a href="#quickstart">Documentation</a>
           <a href="#buildathon">Buildathon submission</a>
           <a href="#demo">Live demo</a>
@@ -827,6 +826,6 @@ docker build -t focus67dumby .
         </div>
       </div>
     </footer>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=2.0.1" defer></script>
   </body>
 </html>

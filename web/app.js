@@ -2,8 +2,8 @@
   'use strict';
 
   var defaults = {
-    githubUrl: 'https://github.com/',
-    installerUrl: '',
+    githubUrl: 'https://github.com/Thrizzio/Focus67Dumby',
+    installerUrl: 'https://github.com/Thrizzio/Focus67Dumby',
     webhookUrl: '',
     paymentLinks: { upi: '', razorpay: '', cards: '', stripe: '' },
     currency: 'USD',
@@ -46,7 +46,8 @@
     productName: '',
     price: '',
     defaultProduct: '',
-    defaultPrice: ''
+    defaultPrice: '',
+    redirectTimer: null
   };
 
   function q(selector, root) {
@@ -461,7 +462,7 @@
   function setupSourceLink() {
     var link = q('#open-source-link');
     if (!link) return;
-    var url = safeUrl(config.githubUrl) || 'https://github.com/';
+    var url = safeUrl(config.githubUrl) || 'https://github.com/Thrizzio/Focus67Dumby';
     link.setAttribute('href', url);
     if (!link.getAttribute('target')) link.setAttribute('target', '_blank');
     if (link.getAttribute('target') === '_blank') link.setAttribute('rel', 'noopener noreferrer');
@@ -689,13 +690,22 @@
     if (done) { hide(done, !success); done.setAttribute('aria-live', 'polite'); }
   }
   function setDownloads(enabled) {
+    var repoUrl = safeUrl(config.installerUrl) || safeUrl(config.githubUrl) || 'https://github.com/Thrizzio/Focus67Dumby';
     [q('#download-bundle'), q('#download-receipt')].filter(Boolean).forEach(function (control) {
       if ('disabled' in control) control.disabled = !enabled;
       control.setAttribute('aria-disabled', enabled ? 'false' : 'true');
       control.classList.toggle('is-disabled', !enabled);
       if (control.tagName === 'A') {
-        if (!enabled) control.setAttribute('tabindex', '-1');
-        else if (control.getAttribute('tabindex') === '-1') control.removeAttribute('tabindex');
+        if (!enabled) {
+          control.setAttribute('tabindex', '-1');
+        } else {
+          if (control.getAttribute('tabindex') === '-1') control.removeAttribute('tabindex');
+          if (control.id === 'download-bundle') {
+            control.setAttribute('href', repoUrl);
+            control.setAttribute('target', '_blank');
+            control.setAttribute('rel', 'noopener noreferrer');
+          }
+        }
       }
     });
   }
@@ -767,7 +777,8 @@
     setLicense(purchase.licenseKey);
     setDownloads(true);
     showSteps(true);
-    var message = 'Payment simulated successfully for ' + purchase.productName + '. ' + (purchase.price ? 'Amount: ' + formatPrice(purchase.price) + '. ' : '') + 'Your license key is ready below.';
+    var repoUrl = safeUrl(config.installerUrl) || safeUrl(config.githubUrl) || 'https://github.com/Thrizzio/Focus67Dumby';
+    var message = 'Payment simulated successfully for ' + purchase.productName + '. ' + (purchase.price ? 'Amount: ' + formatPrice(purchase.price) + '. ' : '') + 'Your license key is ready below. Redirecting to GitHub repository…';
     if (result && result.sent === false && config.webhookUrl) message += ' The local license is still available.';
     var messages = qa('#checkout-success-text, #checkout-success-message, #success-message, [data-checkout-success-text]');
     if (!messages.length) {
@@ -780,6 +791,24 @@
     put(q('#checkout-product-name'), purchase.productName);
     if (purchase.price) put(q('#checkout-price'), formatPrice(purchase.price));
     focusElement(q('#checkout-step-success'));
+
+    if (app.redirectTimer && global.clearTimeout) global.clearTimeout(app.redirectTimer);
+    if (global.setTimeout) {
+      app.redirectTimer = global.setTimeout(function () {
+        try {
+          if (typeof global.open === 'function') {
+            var popup = global.open(repoUrl, '_blank', 'noopener,noreferrer');
+            if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+              if (global.location) global.location.href = repoUrl;
+            }
+          } else if (global.location) {
+            global.location.href = repoUrl;
+          }
+        } catch (e) {
+          if (global.location) global.location.href = repoUrl;
+        }
+      }, 2000);
+    }
   }
   function submitCheckout() {
     if (app.processing || !validate()) return Promise.resolve(false);
@@ -825,6 +854,10 @@
     if (global.setTimeout) global.setTimeout(function () { focusElement(target); }, 0); else focusElement(target);
   }
   function closeCheckout() {
+    if (app.redirectTimer && global.clearTimeout) {
+      global.clearTimeout(app.redirectTimer);
+      app.redirectTimer = null;
+    }
     if (!app.modal) return;
     app.modal.classList.remove('is-open', 'open');
     app.modal.setAttribute('aria-hidden', 'true');
@@ -882,59 +915,6 @@
     if (reset) reset.addEventListener('click', function (event) { event.preventDefault(); openCheckout(app.trigger); });
   }
 
-  function utf8(value) {
-    var string = String(value == null ? '' : value);
-    if (global.TextEncoder) return new global.TextEncoder().encode(string);
-    var bytes = [];
-    for (var i = 0; i < string.length; i += 1) {
-      var code = string.charCodeAt(i);
-      if (code >= 0xD800 && code <= 0xDBFF && i + 1 < string.length) {
-        var next = string.charCodeAt(i + 1);
-        if (next >= 0xDC00 && next <= 0xDFFF) { code = 0x10000 + ((code - 0xD800) << 10) + next - 0xDC00; i += 1; }
-      }
-      if (code < 0x80) bytes.push(code);
-      else if (code < 0x800) bytes.push(0xC0 | (code >> 6), 0x80 | (code & 63));
-      else if (code < 0x10000) bytes.push(0xE0 | (code >> 12), 0x80 | ((code >> 6) & 63), 0x80 | (code & 63));
-      else bytes.push(0xF0 | (code >> 18), 0x80 | ((code >> 12) & 63), 0x80 | ((code >> 6) & 63), 0x80 | (code & 63));
-    }
-    return new Uint8Array(bytes);
-  }
-  function crc32(bytes) {
-    var table = crc32.table;
-    if (!table) {
-      table = new Uint32Array(256);
-      for (var i = 0; i < 256; i += 1) {
-        var value = i;
-        for (var bit = 0; bit < 8; bit += 1) value = value & 1 ? 0xEDB88320 ^ value >>> 1 : value >>> 1;
-        table[i] = value >>> 0;
-      }
-      crc32.table = table;
-    }
-    var result = 0xFFFFFFFF;
-    for (var index = 0; index < bytes.length; index += 1) result = table[(result ^ bytes[index]) & 255] ^ result >>> 8;
-    return (result ^ 0xFFFFFFFF) >>> 0;
-  }
-  function put16(bytes, offset, value) { bytes[offset] = value & 255; bytes[offset + 1] = value >>> 8 & 255; }
-  function put32(bytes, offset, value) { bytes[offset] = value & 255; bytes[offset + 1] = value >>> 8 & 255; bytes[offset + 2] = value >>> 16 & 255; bytes[offset + 3] = value >>> 24 & 255; }
-  function joinBytes(chunks) {
-    var total = chunks.reduce(function (sum, item) { return sum + item.length; }, 0), output = new Uint8Array(total), offset = 0;
-    chunks.forEach(function (item) { output.set(item, offset); offset += item.length; });
-    return output;
-  }
-  function zip(files) {
-    var now = new Date(), time = now.getHours() << 11 | now.getMinutes() << 5 | Math.floor(now.getSeconds() / 2), year = Math.max(1980, now.getFullYear()), date = year - 1980 << 9 | now.getMonth() + 1 << 5 | now.getDate();
-    var locals = [], centrals = [], offset = 0;
-    files.forEach(function (file) {
-      var name = utf8(file.name), data = utf8(file.content), sum = crc32(data), local = new Uint8Array(30 + name.length + data.length);
-      put32(local, 0, 0x04034B50); put16(local, 4, 20); put16(local, 6, 0x0800); put16(local, 8, 0); put16(local, 10, time); put16(local, 12, date); put32(local, 14, sum); put32(local, 18, data.length); put32(local, 22, data.length); put16(local, 26, name.length); put16(local, 28, 0); local.set(name, 30); local.set(data, 30 + name.length); locals.push(local);
-      var central = new Uint8Array(46 + name.length);
-      put32(central, 0, 0x02014B50); put16(central, 4, 20); put16(central, 6, 20); put16(central, 8, 0x0800); put16(central, 10, 0); put16(central, 12, time); put16(central, 14, date); put32(central, 16, sum); put32(central, 20, data.length); put32(central, 24, data.length); put16(central, 28, name.length); put16(central, 30, 0); put16(central, 32, 0); put16(central, 34, 0); put16(central, 36, 0); put32(central, 38, 0); put32(central, 42, offset); central.set(name, 46); centrals.push(central);
-      offset += local.length;
-    });
-    var localData = joinBytes(locals), centralData = joinBytes(centrals), end = new Uint8Array(22);
-    put32(end, 0, 0x06054B50); put16(end, 4, 0); put16(end, 6, 0); put16(end, 8, files.length); put16(end, 10, files.length); put32(end, 12, centralData.length); put32(end, 16, localData.length); put16(end, 20, 0);
-    return joinBytes([localData, centralData, end]);
-  }
   function saveBlob(blob, filename) {
     if (!blob) return false;
     if (global.navigator && global.navigator.msSaveOrOpenBlob) { global.navigator.msSaveOrOpenBlob(blob, filename); return true; }
@@ -947,28 +927,26 @@
     if (global.setTimeout) global.setTimeout(function () { try { global.URL.revokeObjectURL(url); } catch (error) {} }, 1000);
     return true;
   }
-  function licenseFiles(purchase) {
-    return [
-      { name: 'INSTALL.md', content: '# Focus67Dumby Setup\n\nLicense key: ' + purchase.licenseKey + '\n\nExtract this archive and run the installer supplied with your Focus67Dumby download. Enter the license key when prompted.\n' },
-      { name: 'LICENSE.txt', content: 'Focus67Dumby License\n=====================\n\nThis simulated license is issued to the purchaser recorded in license.json.\nLicense key: ' + purchase.licenseKey + '\n' },
-      { name: 'license.json', content: JSON.stringify({ product: purchase.productName, licenseKey: purchase.licenseKey, customerName: purchase.name, customerEmail: purchase.email, paymentMethod: purchase.method, amount: purchase.price, currency: purchase.currency, issuedAt: purchase.issuedAt }, null, 2) }
-    ];
-  }
 
   function currentPurchase() { return app.purchase && app.purchase.licenseKey ? app.purchase : null; }
   function bundleDownload(event) {
-    var control = event.currentTarget, purchase = currentPurchase();
-    if (!purchase) { event.preventDefault(); showError('Complete checkout before downloading the setup bundle.'); return; }
-    var installer = safeUrl(config.installerUrl);
-    if (installer) {
-      control.setAttribute('data-installer-url', installer);
-      if (control.tagName === 'A') { control.setAttribute('href', installer); if (!control.getAttribute('download') && installer.indexOf((document.location && document.location.origin) || '') !== 0) { control.setAttribute('target', '_blank'); control.setAttribute('rel', 'noopener noreferrer'); } return; }
-      event.preventDefault();
-      try { if (global.location && global.location.assign) global.location.assign(installer); else global.location.href = installer; } catch (error) {}
+    if (app.redirectTimer && global.clearTimeout) {
+      global.clearTimeout(app.redirectTimer);
+      app.redirectTimer = null;
+    }
+    var targetUrl = safeUrl(config.installerUrl) || safeUrl(config.githubUrl) || 'https://github.com/Thrizzio/Focus67Dumby';
+    var control = event.currentTarget;
+    if (control && control.tagName === 'A') {
+      control.setAttribute('href', targetUrl);
+      control.setAttribute('target', '_blank');
+      control.setAttribute('rel', 'noopener noreferrer');
       return;
     }
     event.preventDefault();
-    if (typeof global.Blob === 'function') saveBlob(new global.Blob([zip(licenseFiles(purchase))], { type: 'application/zip' }), 'Focus67Dumby-Setup.zip');
+    try {
+      if (typeof global.open === 'function') global.open(targetUrl, '_blank', 'noopener,noreferrer');
+      else if (global.location) global.location.href = targetUrl;
+    } catch (error) {}
   }
   function receipt(purchase) {
     return ['Focus67Dumby receipt', '====================', '', 'Product: ' + purchase.productName, 'Amount: ' + (formatPrice(purchase.price) || 'Included'), 'Currency: ' + purchase.currency, 'Payment method: ' + methodLabel(purchase.method), 'Customer: ' + purchase.name, 'Email: ' + purchase.email, 'License key: ' + purchase.licenseKey, 'Issued: ' + purchase.issuedAt, '', 'This receipt was generated locally by the Focus67Dumby landing page.'].join('\n');
@@ -981,8 +959,18 @@
   }
   function setupDownloads() {
     var bundle = q('#download-bundle'), receiptButton = q('#download-receipt');
-    if (bundle) bundle.addEventListener('click', bundleDownload);
+    var repoUrl = safeUrl(config.installerUrl) || safeUrl(config.githubUrl) || 'https://github.com/Thrizzio/Focus67Dumby';
+    if (bundle) {
+      bundle.setAttribute('href', repoUrl);
+      bundle.setAttribute('target', '_blank');
+      bundle.setAttribute('rel', 'noopener noreferrer');
+      bundle.addEventListener('click', bundleDownload);
+    }
     if (receiptButton) receiptButton.addEventListener('click', receiptDownload);
+    qa('a[href*="github.com"]').forEach(function (anchor) {
+      if (!anchor.getAttribute('target')) anchor.setAttribute('target', '_blank');
+      if (anchor.getAttribute('target') === '_blank') anchor.setAttribute('rel', 'noopener noreferrer');
+    });
   }
   function init() {
     if (document.documentElement && document.documentElement.getAttribute('data-focus67-initialized') === 'true') return;

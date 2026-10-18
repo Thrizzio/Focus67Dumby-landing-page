@@ -36,9 +36,10 @@ const requiredCopy = [
   'python -m src.main', 'docker build -t focus67dumby .', 'Focus67Dumby-Setup.exe'
 ];
 assert(requiredCopy.every((copy) => html.includes(copy)), 'one or more required product claims are missing');
-assert(html.includes('href="styles.css"') && html.includes('src="app.js"'), 'web assets are not wired into index.html');
+assert((html.includes('href="styles.css"') || html.includes('href="styles.css?')) && (html.includes('src="app.js"') || html.includes('src="app.js?')), 'web assets are not wired into index.html');
 assert(css.includes('@media (max-width: 860px)') && css.includes('prefers-reduced-motion'), 'responsive or reduced-motion CSS is missing');
-assert(js.includes('webhookUrl') && js.includes('paymentLinks') && js.includes('Focus67Dumby-Setup.zip'), 'checkout configuration or download flow is missing');
+assert(js.includes('webhookUrl') && js.includes('paymentLinks') && js.includes('https://github.com/Thrizzio/Focus67Dumby'), 'checkout configuration or download flow is missing');
+assert(html.includes('https://github.com/Thrizzio/Focus67Dumby'), 'GitHub repository link is missing from index.html');
 
 if (failures.length) {
   for (const failure of failures) console.error(`FAIL: ${failure}`);
