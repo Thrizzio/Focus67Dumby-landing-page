@@ -30,6 +30,9 @@ Open [http://localhost:4173](http://localhost:4173). The server only serves the 
 
 ```bash
 PORT=8080 npm run start
+# or on Windows (PowerShell / npm argument):
+npm start -- 8080
+$env:PORT=8080; npm run start
 ```
 
 ## Test
@@ -75,7 +78,7 @@ The checkout is intentionally safe in static/demo mode. Before deploying a real 
 <script src="app.js" defer></script>
 ```
 
-The default page keeps `checkoutMode: 'simulation'`, generates a local license receipt, and downloads a real `Focus67Dumby-Setup.zip` archive containing the purchase manifest. No secrets belong in this repository; put deployment-only values in your hosting provider's environment/configuration layer.
+The default page keeps `checkoutMode: 'simulation'`, generates a local license receipt, and directs bundle/download CTAs to the official [Focus67Dumby GitHub repository](https://github.com/Thrizzio/Focus67Dumby). No secrets belong in this repository; put deployment-only values in your hosting provider's environment/configuration layer.
 
 ## Deploy
 
